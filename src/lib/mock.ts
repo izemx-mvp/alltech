@@ -45,7 +45,7 @@ export const campaigns: Campaign[] = [
   { id: "c5", name: "Campagne printemps maraîchage", network: "LinkedIn", status: "Terminée", budget: 5000, spent: 5000, impressions: 520000, clicks: 11200, leads: 486, cpl: 10.3, objective: "Leads" },
 ];
 
-export interface Message { from: "client" | "ia" | "agent"; text: string; time: string }
+export interface Message { from: "client" | "ia" | "agent"; text: string; time: string; source?: string }
 export interface Conversation {
   id: string; name: string; farm: string; channel: "WhatsApp" | "Messenger" | "Site web" | "Instagram";
   preview: string; time: string; status: "IA" | "Humain" | "Résolu" | "En attente"; priority: "Haute" | "Moyenne" | "Basse";
