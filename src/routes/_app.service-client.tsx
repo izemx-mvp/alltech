@@ -21,7 +21,7 @@ const AI_ANSWER = "D'après la base de connaissance ALLTECH, pour des tomates so
 function Support() {
   const ai = useAiRun();
   const [list, setList] = useState<Conversation[]>(seed);
-  const [activeId, setActiveId] = useState(seed[0].id);
+  const [activeId, setActiveId] = useState(seed[0]!.id);
   const [filter, setFilter] = useState("Toutes");
   const [q, setQ] = useState("");
   const [msg, setMsg] = useState("");

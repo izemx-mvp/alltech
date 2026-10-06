@@ -38,7 +38,7 @@ function Login() {
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email.includes("@") || pwd.length < 4) return toast.error("Veuillez saisir un email et un mot de passe valides.");
+    if (!email.includes("@") || pwd.length < 4) { toast.error("Veuillez saisir un email et un mot de passe valides."); return; }
     setLoading(true);
     setTimeout(() => { toast.success("Connexion réussie. Bienvenue Sophie !"); navigate({ to: "/dashboard" }); }, 1100);
   };

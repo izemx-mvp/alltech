@@ -37,7 +37,7 @@ function Cal() {
 
   const generate = async () => {
     await ai.run(["Analyse des performances...", "Identification des meilleurs créneaux...", "Génération du calendrier..."]);
-    const add: Post[] = aiPosts.map((t, i) => ({ id: crypto.randomUUID(), title: t, network: nets[i % 3], status: "À valider", date: key(Math.min(days, 13 + i * 2)), time: "09:00", reach: 0, engagement: 0, ai: true, type: "Post" }));
+    const add: Post[] = aiPosts.map((t, i) => ({ id: crypto.randomUUID(), title: t, network: nets[i % 3]!, status: "À valider", date: key(Math.min(days, 13 + i * 2)), time: "09:00", reach: 0, engagement: 0, ai: true, type: "Post" }));
     setItems((x) => [...x, ...add]);
     toast.success("Calendrier généré : 7 publications proposées par l'IA.");
   };
@@ -63,7 +63,7 @@ function Cal() {
             const today = month === 9 && d === 6;
             return (
               <div key={d} onDragOver={(e) => { e.preventDefault(); setOver(k); }} onDragLeave={() => setOver(null)}
-                onDrop={() => { if (drag) { setItems((x) => x.map((p) => p.id === drag ? { ...p, date: k } : p)); toast.success(`Publication déplacée au ${d} ${MONTHS[month].toLowerCase()}.`); } setDrag(null); setOver(null); }}
+                onDrop={() => { if (drag) { setItems((x) => x.map((p) => p.id === drag ? { ...p, date: k } : p)); toast.success(`Publication déplacée au ${d} ${MONTHS[month]!.toLowerCase()}.`); } setDrag(null); setOver(null); }}
                 className={cn("group min-h-28 bg-background/70 p-1.5 transition", over === k && "bg-primary/10")}>
                 <div className="mb-1 flex items-center justify-between">
                   <span className={cn("grid h-6 w-6 place-items-center rounded-full", today && "bg-primary font-bold text-primary-foreground")}>{d}</span>

@@ -31,9 +31,9 @@ function Studio() {
   const [vis, setVis] = useState(visuals);
 
   const generate = async () => {
-    if (!prompt.trim()) return toast.error("Décrivez le contenu à générer.");
+    if (!prompt.trim()) { toast.error("Décrivez le contenu à générer."); return; }
     await ai.run(["Analyse de la demande...", "Recherche dans la base de connaissance...", "Génération du contenu..."]);
-    setItems((x) => [{ ...posts[0], id: crypto.randomUUID(), title: prompt.slice(0, 70), status: "À valider", ai: true, network: "LinkedIn" }, ...x]);
+    setItems((x) => [{ ...posts[0]!, id: crypto.randomUUID(), title: prompt.slice(0, 70), status: "À valider", ai: true, network: "LinkedIn" }, ...x]);
     toast.success("Contenu généré par l'Agent IA.");
   };
 

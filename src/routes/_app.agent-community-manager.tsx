@@ -26,7 +26,7 @@ const draftFor = (title: string, tone: string) =>
 function AgentCM() {
   const ai = useAiRun();
   const [ideas, setIdeas] = useState(contentIdeas.slice(0, 3));
-  const [selected, setSelected] = useState(contentIdeas[0]);
+  const [selected, setSelected] = useState(contentIdeas[0]!);
   const [draft, setDraft] = useState("");
   const [tone, setTone] = useState("Pédagogique");
   const [network, setNetwork] = useState("LinkedIn");

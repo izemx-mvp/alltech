@@ -68,7 +68,7 @@ const toneMap: Record<string, string> = {
   ai: "bg-ai/12 text-ai border-ai/25",
 };
 export function StatusBadge({ children, tone = "gray" }: { children: ReactNode; tone?: keyof typeof toneMap | string }) {
-  return <span className={cn("inline-flex items-center gap-1 whitespace-nowrap rounded-full border px-2 py-0.5 text-[11px] font-medium", toneMap[tone] ?? toneMap.gray)}>{children}</span>;
+  return <span className={cn("inline-flex items-center gap-1 whitespace-nowrap rounded-full border px-2 py-0.5 text-[11px] font-medium", toneMap[tone] ?? toneMap["gray"])}>{children}</span>;
 }
 export const statusTone = (s: string) =>
   ({ "Publié": "green", "Active": "green", "Résolu": "green", "Indexé": "green", "Programmé": "blue", "IA": "ai", "À valider": "amber", "En pause": "amber", "En attente": "amber", "En cours": "amber", "Humain": "blue", "Haute": "red", "Moyenne": "amber", "Basse": "gray" } as Record<string, string>)[s] ?? "gray";

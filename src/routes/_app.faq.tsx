@@ -22,7 +22,7 @@ function FaqPage() {
   const [edit, setEdit] = useState<Faq | null>(null);
 
   const save = () => {
-    if (!edit || !edit.q.trim() || !edit.a.trim()) return toast.error("Question et réponse requises.");
+    if (!edit || !edit.q.trim() || !edit.a.trim()) { toast.error("Question et réponse requises."); return; }
     setItems((l) => l.some((x) => x.id === edit.id) ? l.map((x) => x.id === edit.id ? edit : x) : [edit, ...l]);
     setEdit(null); toast.success("FAQ enregistrée.");
   };

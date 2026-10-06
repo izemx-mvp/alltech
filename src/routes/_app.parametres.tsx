@@ -36,7 +36,7 @@ function Settings() {
             <Panel className="space-y-5">
               <Field label="Piliers éditoriaux"><Textarea defaultValue="Expertise agronomique · Témoignages agriculteurs · Innovation produit · Agriculture durable" rows={3} /></Field>
               <Field label="Mots à éviter"><Textarea defaultValue="garanti, miracle, 100 % efficace" rows={2} /></Field>
-              <Field label={`Niveau d'autonomie : ${autonomy[cmAuto[0]]}`}><Slider value={cmAuto} onValueChange={setCmAuto} max={3} step={1} /></Field>
+              <Field label={`Niveau d'autonomie : ${autonomy[cmAuto[0] ?? 0]}`}><Slider value={cmAuto} onValueChange={setCmAuto} max={3} step={1} /></Field>
               <Row label="Publier automatiquement aux meilleurs horaires" def />
             </Panel>
           </div>
@@ -56,7 +56,7 @@ function Settings() {
               <Field label="Informations à collecter">
                 <Row label="Type de culture" def /><Row label="Surface cultivée" def /><Row label="Région" def /><Row label="Numéro de téléphone" def={false} />
               </Field>
-              <Field label={`Niveau d'autonomie : ${autonomy[scAuto[0]]}`}><Slider value={scAuto} onValueChange={setScAuto} max={3} step={1} /></Field>
+              <Field label={`Niveau d'autonomie : ${autonomy[scAuto[0] ?? 0]}`}><Slider value={scAuto} onValueChange={setScAuto} max={3} step={1} /></Field>
             </Panel>
           </div>
         </TabsContent>
