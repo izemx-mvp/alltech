@@ -11,7 +11,11 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppRouteImport } from './routes/_app'
+import { Route as AppAgentCommunityManagerRouteImport } from './routes/_app.agent-community-manager'
+import { Route as AppCalendrierRouteImport } from './routes/_app.calendrier'
 import { Route as AppDashboardRouteImport } from './routes/_app.dashboard'
+import { Route as AppInspirationsRouteImport } from './routes/_app.inspirations'
+import { Route as AppReseauxSociauxRouteImport } from './routes/_app.reseaux-sociaux'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,32 +26,85 @@ const AppRoute = AppRouteImport.update({
   id: '/_app',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppAgentCommunityManagerRoute =
+  AppAgentCommunityManagerRouteImport.update({
+    id: '/agent-community-manager',
+    path: '/agent-community-manager',
+    getParentRoute: () => AppRoute,
+  } as any)
+const AppCalendrierRoute = AppCalendrierRouteImport.update({
+  id: '/calendrier',
+  path: '/calendrier',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppDashboardRoute = AppDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
   getParentRoute: () => AppRoute,
 } as any)
+const AppInspirationsRoute = AppInspirationsRouteImport.update({
+  id: '/inspirations',
+  path: '/inspirations',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppReseauxSociauxRoute = AppReseauxSociauxRouteImport.update({
+  id: '/reseaux-sociaux',
+  path: '/reseaux-sociaux',
+  getParentRoute: () => AppRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/agent-community-manager': typeof AppAgentCommunityManagerRoute
+  '/calendrier': typeof AppCalendrierRoute
   '/dashboard': typeof AppDashboardRoute
+  '/inspirations': typeof AppInspirationsRoute
+  '/reseaux-sociaux': typeof AppReseauxSociauxRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/agent-community-manager': typeof AppAgentCommunityManagerRoute
+  '/calendrier': typeof AppCalendrierRoute
   '/dashboard': typeof AppDashboardRoute
+  '/inspirations': typeof AppInspirationsRoute
+  '/reseaux-sociaux': typeof AppReseauxSociauxRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_app': typeof AppRouteWithChildren
+  '/_app/agent-community-manager': typeof AppAgentCommunityManagerRoute
+  '/_app/calendrier': typeof AppCalendrierRoute
   '/_app/dashboard': typeof AppDashboardRoute
+  '/_app/inspirations': typeof AppInspirationsRoute
+  '/_app/reseaux-sociaux': typeof AppReseauxSociauxRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dashboard'
+  fullPaths:
+    | '/'
+    | '/agent-community-manager'
+    | '/calendrier'
+    | '/dashboard'
+    | '/inspirations'
+    | '/reseaux-sociaux'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dashboard'
-  id: '__root__' | '/' | '/_app' | '/_app/dashboard'
+  to:
+    | '/'
+    | '/agent-community-manager'
+    | '/calendrier'
+    | '/dashboard'
+    | '/inspirations'
+    | '/reseaux-sociaux'
+  id:
+    | '__root__'
+    | '/'
+    | '/_app'
+    | '/_app/agent-community-manager'
+    | '/_app/calendrier'
+    | '/_app/dashboard'
+    | '/_app/inspirations'
+    | '/_app/reseaux-sociaux'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -71,6 +128,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_app/agent-community-manager': {
+      id: '/_app/agent-community-manager'
+      path: '/agent-community-manager'
+      fullPath: '/agent-community-manager'
+      preLoaderRoute: typeof AppAgentCommunityManagerRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/calendrier': {
+      id: '/_app/calendrier'
+      path: '/calendrier'
+      fullPath: '/calendrier'
+      preLoaderRoute: typeof AppCalendrierRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/dashboard': {
       id: '/_app/dashboard'
       path: '/dashboard'
@@ -78,15 +149,37 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppDashboardRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/inspirations': {
+      id: '/_app/inspirations'
+      path: '/inspirations'
+      fullPath: '/inspirations'
+      preLoaderRoute: typeof AppInspirationsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/reseaux-sociaux': {
+      id: '/_app/reseaux-sociaux'
+      path: '/reseaux-sociaux'
+      fullPath: '/reseaux-sociaux'
+      preLoaderRoute: typeof AppReseauxSociauxRouteImport
+      parentRoute: typeof AppRoute
+    }
   }
 }
 
 interface AppRouteChildren {
+  AppAgentCommunityManagerRoute: typeof AppAgentCommunityManagerRoute
+  AppCalendrierRoute: typeof AppCalendrierRoute
   AppDashboardRoute: typeof AppDashboardRoute
+  AppInspirationsRoute: typeof AppInspirationsRoute
+  AppReseauxSociauxRoute: typeof AppReseauxSociauxRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
+  AppAgentCommunityManagerRoute: AppAgentCommunityManagerRoute,
+  AppCalendrierRoute: AppCalendrierRoute,
   AppDashboardRoute: AppDashboardRoute,
+  AppInspirationsRoute: AppInspirationsRoute,
+  AppReseauxSociauxRoute: AppReseauxSociauxRoute,
 }
 
 const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
