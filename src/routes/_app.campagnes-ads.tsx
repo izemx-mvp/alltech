@@ -17,7 +17,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSepara
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/_app/campagnes-ads")({
-  validateSearch: (s: Record<string, unknown>): { post?: string } => (typeof s.post === "string" ? { post: s.post } : {}),
+  validateSearch: (s: Record<string, unknown>): { post?: string } => (typeof s["post"] === "string" ? { post: s["post"] } : {}),
   head: () => seo("Campagnes Ads IA", "Créez et pilotez vos campagnes Meta et LinkedIn avec l'assistance de l'IA."),
   component: Ads,
 });
