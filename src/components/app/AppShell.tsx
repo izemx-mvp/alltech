@@ -138,7 +138,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             </DropdownMenu>
           </div>
         </header>
-        <main className="mx-auto max-w-[1500px] p-6 animate-in fade-in slide-in-from-bottom-2 duration-500" key={path}>{children}</main>
+        <main className="mx-auto max-w-[1500px] p-6">{children}</main>
       </div>
     </div>
   );
