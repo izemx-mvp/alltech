@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppRouteImport } from './routes/_app'
 import { Route as AppBaseDeConnaissanceRouteImport } from './routes/_app.base-de-connaissance'
 import { Route as AppCampagnesAdsRouteImport } from './routes/_app.campagnes-ads'
+import { Route as AppCommunityManagerRouteImport } from './routes/_app.community-manager'
 import { Route as AppDashboardRouteImport } from './routes/_app.dashboard'
 import { Route as AppServiceClientRouteImport } from './routes/_app.service-client'
 
@@ -35,6 +36,11 @@ const AppCampagnesAdsRoute = AppCampagnesAdsRouteImport.update({
   path: '/campagnes-ads',
   getParentRoute: () => AppRoute,
 } as any)
+const AppCommunityManagerRoute = AppCommunityManagerRouteImport.update({
+  id: '/community-manager',
+  path: '/community-manager',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppDashboardRoute = AppDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
@@ -50,6 +56,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/base-de-connaissance': typeof AppBaseDeConnaissanceRoute
   '/campagnes-ads': typeof AppCampagnesAdsRoute
+  '/community-manager': typeof AppCommunityManagerRoute
   '/dashboard': typeof AppDashboardRoute
   '/service-client': typeof AppServiceClientRoute
 }
@@ -57,6 +64,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/base-de-connaissance': typeof AppBaseDeConnaissanceRoute
   '/campagnes-ads': typeof AppCampagnesAdsRoute
+  '/community-manager': typeof AppCommunityManagerRoute
   '/dashboard': typeof AppDashboardRoute
   '/service-client': typeof AppServiceClientRoute
 }
@@ -66,6 +74,7 @@ export interface FileRoutesById {
   '/_app': typeof AppRouteWithChildren
   '/_app/base-de-connaissance': typeof AppBaseDeConnaissanceRoute
   '/_app/campagnes-ads': typeof AppCampagnesAdsRoute
+  '/_app/community-manager': typeof AppCommunityManagerRoute
   '/_app/dashboard': typeof AppDashboardRoute
   '/_app/service-client': typeof AppServiceClientRoute
 }
@@ -75,6 +84,7 @@ export interface FileRouteTypes {
     | '/'
     | '/base-de-connaissance'
     | '/campagnes-ads'
+    | '/community-manager'
     | '/dashboard'
     | '/service-client'
   fileRoutesByTo: FileRoutesByTo
@@ -82,6 +92,7 @@ export interface FileRouteTypes {
     | '/'
     | '/base-de-connaissance'
     | '/campagnes-ads'
+    | '/community-manager'
     | '/dashboard'
     | '/service-client'
   id:
@@ -90,6 +101,7 @@ export interface FileRouteTypes {
     | '/_app'
     | '/_app/base-de-connaissance'
     | '/_app/campagnes-ads'
+    | '/_app/community-manager'
     | '/_app/dashboard'
     | '/_app/service-client'
   fileRoutesById: FileRoutesById
@@ -129,6 +141,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppCampagnesAdsRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/community-manager': {
+      id: '/_app/community-manager'
+      path: '/community-manager'
+      fullPath: '/community-manager'
+      preLoaderRoute: typeof AppCommunityManagerRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/dashboard': {
       id: '/_app/dashboard'
       path: '/dashboard'
@@ -149,6 +168,7 @@ declare module '@tanstack/react-router' {
 interface AppRouteChildren {
   AppBaseDeConnaissanceRoute: typeof AppBaseDeConnaissanceRoute
   AppCampagnesAdsRoute: typeof AppCampagnesAdsRoute
+  AppCommunityManagerRoute: typeof AppCommunityManagerRoute
   AppDashboardRoute: typeof AppDashboardRoute
   AppServiceClientRoute: typeof AppServiceClientRoute
 }
@@ -156,6 +176,7 @@ interface AppRouteChildren {
 const AppRouteChildren: AppRouteChildren = {
   AppBaseDeConnaissanceRoute: AppBaseDeConnaissanceRoute,
   AppCampagnesAdsRoute: AppCampagnesAdsRoute,
+  AppCommunityManagerRoute: AppCommunityManagerRoute,
   AppDashboardRoute: AppDashboardRoute,
   AppServiceClientRoute: AppServiceClientRoute,
 }
