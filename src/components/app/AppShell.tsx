@@ -1,8 +1,7 @@
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import {
-  LayoutDashboard, Share2, Bot, Lightbulb, CalendarDays, PenTool, Megaphone, Headset, BookOpen, HelpCircle,
-  FolderOpen, BarChart3, FileText, Settings, Search, Bell, Plus, LogOut, User, Sprout, Sparkles,
+  LayoutDashboard, Bot, PenTool, Megaphone, Headset, BookOpen, HelpCircle, Settings, Search, Bell, Plus, LogOut, Sprout, Sparkles, PanelLeftClose, PanelLeftOpen,
 } from "lucide-react";
 import { toast } from "sonner";
 import { AnimatedBackground } from "./kit";
@@ -15,19 +14,10 @@ import { cn } from "@/lib/utils";
 
 const nav = [
   { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { to: "/reseaux-sociaux", label: "Réseaux sociaux", icon: Share2 },
-  { to: "/agent-community-manager", label: "Agent IA Community Manager", icon: Bot, ai: true },
-  { to: "/inspirations", label: "Inspirations", icon: Lightbulb },
-  { to: "/calendrier", label: "Calendrier éditorial", icon: CalendarDays },
-  { to: "/studio", label: "Studio de contenu", icon: PenTool },
-  { to: "/campagnes-ads", label: "Campagnes Ads", icon: Megaphone },
+  { to: "/community-manager", label: "Community Manager IA", icon: Bot, ai: true },
+  { to: "/campagnes-ads", label: "Campagnes Ads IA", icon: Megaphone, ai: true },
   { to: "/service-client", label: "Service Client IA", icon: Headset, ai: true },
-  { to: "/base-de-connaissance", label: "Base de connaissance", icon: BookOpen },
-  { to: "/faq", label: "FAQ", icon: HelpCircle },
-  { to: "/bibliotheque", label: "Bibliothèque", icon: FolderOpen },
-  { to: "/analytics", label: "Analytics", icon: BarChart3 },
-  { to: "/rapports", label: "Rapports", icon: FileText },
-  { to: "/parametres", label: "Paramètres", icon: Settings },
+  { to: "/base-de-connaissance", label: "Base de connaissance IA", icon: BookOpen, ai: true },
 ] as const;
 
 const initialNotifs = [
@@ -41,16 +31,17 @@ export function AppShell({ children }: { children: ReactNode }) {
   const path = useRouterState({ select: (s) => s.location.pathname });
   const navigate = useNavigate();
   const [q, setQ] = useState("");
+  const [collapsed, setCollapsed] = useState(false);
   const [notifs, setNotifs] = useState(initialNotifs);
   const results = q ? nav.filter((n) => n.label.toLowerCase().includes(q.toLowerCase())) : [];
 
   return (
     <div className="min-h-screen">
       <AnimatedBackground />
-      <aside className="fixed inset-y-0 left-0 z-30 hidden w-64 flex-col border-r border-sidebar-border bg-sidebar backdrop-blur-xl lg:flex">
+      <aside className={`fixed inset-y-0 left-0 z-30 hidden flex-col transition-[width] duration-300 ${collapsed ? "w-[76px]" : "w-64"} border-r border-sidebar-border bg-sidebar backdrop-blur-xl lg:flex`}>
         <Link to="/dashboard" className="flex items-center gap-3 px-5 py-5">
           <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-primary text-primary-foreground shadow-glow"><Sprout className="h-5 w-5" /></span>
-          <div>
+          <div className={collapsed ? "hidden" : ""}>
             <div className="font-display text-lg font-bold tracking-tight">ALLTECH</div>
             <div className="text-[10px] uppercase tracking-[0.22em] text-muted-foreground">Digital Intelligence</div>
           </div>
@@ -59,24 +50,27 @@ export function AppShell({ children }: { children: ReactNode }) {
           {nav.map((n) => {
             const active = path.startsWith(n.to);
             return (
-              <Link key={n.to} to={n.to}
-                className={cn("group relative flex items-center gap-3 rounded-lg px-3 py-2 text-[13px] text-sidebar-foreground transition-all hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
+              <Link key={n.to} to={n.to} title={n.label}
+                className={cn("group relative flex items-center gap-3 rounded-lg px-3 py-2.5 text-[13px] text-sidebar-foreground transition-all hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
                   active && "bg-sidebar-accent font-semibold text-sidebar-accent-foreground")}>
                 {active && <span className="absolute left-0 top-1/2 h-5 w-[3px] -translate-y-1/2 rounded-r bg-primary shadow-glow" />}
                 <n.icon className={cn("h-4 w-4 shrink-0", active ? "text-primary" : "text-muted-foreground group-hover:text-primary")} />
-                <span className="truncate">{n.label}</span>
-                {"ai" in n && <Sparkles className="ml-auto h-3 w-3 text-ai" />}
+                {!collapsed && <span className="truncate">{n.label}</span>}
+                {!collapsed && "ai" in n && <Sparkles className="ml-auto h-3 w-3 text-ai" />}
               </Link>
             );
           })}
         </nav>
-        <div className="m-3 rounded-xl ai-border bg-ai/5 p-3 text-xs">
+        <button onClick={() => setCollapsed((c) => !c)} className="mx-3 mb-2 flex items-center gap-2 rounded-lg px-3 py-2 text-xs text-muted-foreground hover:bg-sidebar-accent hover:text-foreground">
+          {collapsed ? <PanelLeftOpen className="h-4 w-4" /> : <><PanelLeftClose className="h-4 w-4" /> Réduire le menu</>}
+        </button>
+        <div className={`m-3 rounded-xl ai-border ${collapsed ? "hidden" : ""} bg-ai/5 p-3 text-xs`}>
           <div className="flex items-center gap-2 font-semibold text-ai"><span className="h-2 w-2 rounded-full bg-primary animate-pulse-ring" /> Agents IA actifs</div>
           <p className="mt-1 text-muted-foreground">2 agents · 148 actions aujourd'hui</p>
         </div>
       </aside>
 
-      <div className="lg:pl-64">
+      <div className={`transition-[padding] duration-300 ${collapsed ? "lg:pl-[76px]" : "lg:pl-64"}`}>
         <header className="sticky top-0 z-20 flex h-16 items-center gap-3 border-b bg-background/60 px-6 backdrop-blur-xl">
           <div className="relative w-full max-w-md">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
@@ -97,10 +91,10 @@ export function AppShell({ children }: { children: ReactNode }) {
             <DropdownMenu>
               <DropdownMenuTrigger asChild><Button size="sm"><Plus /> Action rapide</Button></DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-60">
-                <DropdownMenuItem onClick={() => navigate({ to: "/studio" })}><PenTool /> Nouvelle publication</DropdownMenuItem>
-                <DropdownMenuItem onClick={() => navigate({ to: "/agent-community-manager" })}><Sparkles /> Générer avec l'IA</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => navigate({ to: "/community-manager", search: { tab: "idees" } })}><Sparkles /> Générer des idées de posts</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => navigate({ to: "/community-manager", search: { tab: "calendrier" } })}><PenTool /> Voir le calendrier</DropdownMenuItem>
                 <DropdownMenuItem onClick={() => navigate({ to: "/campagnes-ads" })}><Megaphone /> Nouvelle campagne</DropdownMenuItem>
-                <DropdownMenuItem onClick={() => navigate({ to: "/faq" })}><HelpCircle /> Ajouter une FAQ</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => navigate({ to: "/base-de-connaissance" })}><HelpCircle /> Ajouter une FAQ</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
             <Popover>
@@ -132,7 +126,7 @@ export function AppShell({ children }: { children: ReactNode }) {
               <DropdownMenuContent align="end" className="w-52">
                 <DropdownMenuLabel>Mon compte</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={() => navigate({ to: "/parametres" })}><User /> Profil & paramètres</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => navigate({ to: "/service-client", search: { tab: "configuration" } })}><Settings /> Configuration des agents</DropdownMenuItem>
                 <DropdownMenuItem onClick={() => { toast("Déconnexion réussie"); navigate({ to: "/" }); }}><LogOut /> Se déconnecter</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
