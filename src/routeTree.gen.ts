@@ -11,20 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppRouteImport } from './routes/_app'
-import { Route as AppAgentCommunityManagerRouteImport } from './routes/_app.agent-community-manager'
-import { Route as AppAnalyticsRouteImport } from './routes/_app.analytics'
 import { Route as AppBaseDeConnaissanceRouteImport } from './routes/_app.base-de-connaissance'
-import { Route as AppBibliothequeRouteImport } from './routes/_app.bibliotheque'
-import { Route as AppCalendrierRouteImport } from './routes/_app.calendrier'
 import { Route as AppCampagnesAdsRouteImport } from './routes/_app.campagnes-ads'
 import { Route as AppDashboardRouteImport } from './routes/_app.dashboard'
-import { Route as AppFaqRouteImport } from './routes/_app.faq'
-import { Route as AppInspirationsRouteImport } from './routes/_app.inspirations'
-import { Route as AppParametresRouteImport } from './routes/_app.parametres'
-import { Route as AppRapportsRouteImport } from './routes/_app.rapports'
-import { Route as AppReseauxSociauxRouteImport } from './routes/_app.reseaux-sociaux'
 import { Route as AppServiceClientRouteImport } from './routes/_app.service-client'
-import { Route as AppStudioRouteImport } from './routes/_app.studio'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -35,30 +25,9 @@ const AppRoute = AppRouteImport.update({
   id: '/_app',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AppAgentCommunityManagerRoute =
-  AppAgentCommunityManagerRouteImport.update({
-    id: '/agent-community-manager',
-    path: '/agent-community-manager',
-    getParentRoute: () => AppRoute,
-  } as any)
-const AppAnalyticsRoute = AppAnalyticsRouteImport.update({
-  id: '/analytics',
-  path: '/analytics',
-  getParentRoute: () => AppRoute,
-} as any)
 const AppBaseDeConnaissanceRoute = AppBaseDeConnaissanceRouteImport.update({
   id: '/base-de-connaissance',
   path: '/base-de-connaissance',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppBibliothequeRoute = AppBibliothequeRouteImport.update({
-  id: '/bibliotheque',
-  path: '/bibliotheque',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppCalendrierRoute = AppCalendrierRouteImport.update({
-  id: '/calendrier',
-  path: '/calendrier',
   getParentRoute: () => AppRoute,
 } as any)
 const AppCampagnesAdsRoute = AppCampagnesAdsRouteImport.update({
@@ -71,148 +40,58 @@ const AppDashboardRoute = AppDashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => AppRoute,
 } as any)
-const AppFaqRoute = AppFaqRouteImport.update({
-  id: '/faq',
-  path: '/faq',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppInspirationsRoute = AppInspirationsRouteImport.update({
-  id: '/inspirations',
-  path: '/inspirations',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppParametresRoute = AppParametresRouteImport.update({
-  id: '/parametres',
-  path: '/parametres',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppRapportsRoute = AppRapportsRouteImport.update({
-  id: '/rapports',
-  path: '/rapports',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppReseauxSociauxRoute = AppReseauxSociauxRouteImport.update({
-  id: '/reseaux-sociaux',
-  path: '/reseaux-sociaux',
-  getParentRoute: () => AppRoute,
-} as any)
 const AppServiceClientRoute = AppServiceClientRouteImport.update({
   id: '/service-client',
   path: '/service-client',
   getParentRoute: () => AppRoute,
 } as any)
-const AppStudioRoute = AppStudioRouteImport.update({
-  id: '/studio',
-  path: '/studio',
-  getParentRoute: () => AppRoute,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/agent-community-manager': typeof AppAgentCommunityManagerRoute
-  '/analytics': typeof AppAnalyticsRoute
   '/base-de-connaissance': typeof AppBaseDeConnaissanceRoute
-  '/bibliotheque': typeof AppBibliothequeRoute
-  '/calendrier': typeof AppCalendrierRoute
   '/campagnes-ads': typeof AppCampagnesAdsRoute
   '/dashboard': typeof AppDashboardRoute
-  '/faq': typeof AppFaqRoute
-  '/inspirations': typeof AppInspirationsRoute
-  '/parametres': typeof AppParametresRoute
-  '/rapports': typeof AppRapportsRoute
-  '/reseaux-sociaux': typeof AppReseauxSociauxRoute
   '/service-client': typeof AppServiceClientRoute
-  '/studio': typeof AppStudioRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/agent-community-manager': typeof AppAgentCommunityManagerRoute
-  '/analytics': typeof AppAnalyticsRoute
   '/base-de-connaissance': typeof AppBaseDeConnaissanceRoute
-  '/bibliotheque': typeof AppBibliothequeRoute
-  '/calendrier': typeof AppCalendrierRoute
   '/campagnes-ads': typeof AppCampagnesAdsRoute
   '/dashboard': typeof AppDashboardRoute
-  '/faq': typeof AppFaqRoute
-  '/inspirations': typeof AppInspirationsRoute
-  '/parametres': typeof AppParametresRoute
-  '/rapports': typeof AppRapportsRoute
-  '/reseaux-sociaux': typeof AppReseauxSociauxRoute
   '/service-client': typeof AppServiceClientRoute
-  '/studio': typeof AppStudioRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_app': typeof AppRouteWithChildren
-  '/_app/agent-community-manager': typeof AppAgentCommunityManagerRoute
-  '/_app/analytics': typeof AppAnalyticsRoute
   '/_app/base-de-connaissance': typeof AppBaseDeConnaissanceRoute
-  '/_app/bibliotheque': typeof AppBibliothequeRoute
-  '/_app/calendrier': typeof AppCalendrierRoute
   '/_app/campagnes-ads': typeof AppCampagnesAdsRoute
   '/_app/dashboard': typeof AppDashboardRoute
-  '/_app/faq': typeof AppFaqRoute
-  '/_app/inspirations': typeof AppInspirationsRoute
-  '/_app/parametres': typeof AppParametresRoute
-  '/_app/rapports': typeof AppRapportsRoute
-  '/_app/reseaux-sociaux': typeof AppReseauxSociauxRoute
   '/_app/service-client': typeof AppServiceClientRoute
-  '/_app/studio': typeof AppStudioRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/agent-community-manager'
-    | '/analytics'
     | '/base-de-connaissance'
-    | '/bibliotheque'
-    | '/calendrier'
     | '/campagnes-ads'
     | '/dashboard'
-    | '/faq'
-    | '/inspirations'
-    | '/parametres'
-    | '/rapports'
-    | '/reseaux-sociaux'
     | '/service-client'
-    | '/studio'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/agent-community-manager'
-    | '/analytics'
     | '/base-de-connaissance'
-    | '/bibliotheque'
-    | '/calendrier'
     | '/campagnes-ads'
     | '/dashboard'
-    | '/faq'
-    | '/inspirations'
-    | '/parametres'
-    | '/rapports'
-    | '/reseaux-sociaux'
     | '/service-client'
-    | '/studio'
   id:
     | '__root__'
     | '/'
     | '/_app'
-    | '/_app/agent-community-manager'
-    | '/_app/analytics'
     | '/_app/base-de-connaissance'
-    | '/_app/bibliotheque'
-    | '/_app/calendrier'
     | '/_app/campagnes-ads'
     | '/_app/dashboard'
-    | '/_app/faq'
-    | '/_app/inspirations'
-    | '/_app/parametres'
-    | '/_app/rapports'
-    | '/_app/reseaux-sociaux'
     | '/_app/service-client'
-    | '/_app/studio'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -236,39 +115,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_app/agent-community-manager': {
-      id: '/_app/agent-community-manager'
-      path: '/agent-community-manager'
-      fullPath: '/agent-community-manager'
-      preLoaderRoute: typeof AppAgentCommunityManagerRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/_app/analytics': {
-      id: '/_app/analytics'
-      path: '/analytics'
-      fullPath: '/analytics'
-      preLoaderRoute: typeof AppAnalyticsRouteImport
-      parentRoute: typeof AppRoute
-    }
     '/_app/base-de-connaissance': {
       id: '/_app/base-de-connaissance'
       path: '/base-de-connaissance'
       fullPath: '/base-de-connaissance'
       preLoaderRoute: typeof AppBaseDeConnaissanceRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/_app/bibliotheque': {
-      id: '/_app/bibliotheque'
-      path: '/bibliotheque'
-      fullPath: '/bibliotheque'
-      preLoaderRoute: typeof AppBibliothequeRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/_app/calendrier': {
-      id: '/_app/calendrier'
-      path: '/calendrier'
-      fullPath: '/calendrier'
-      preLoaderRoute: typeof AppCalendrierRouteImport
       parentRoute: typeof AppRoute
     }
     '/_app/campagnes-ads': {
@@ -285,41 +136,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppDashboardRouteImport
       parentRoute: typeof AppRoute
     }
-    '/_app/faq': {
-      id: '/_app/faq'
-      path: '/faq'
-      fullPath: '/faq'
-      preLoaderRoute: typeof AppFaqRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/_app/inspirations': {
-      id: '/_app/inspirations'
-      path: '/inspirations'
-      fullPath: '/inspirations'
-      preLoaderRoute: typeof AppInspirationsRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/_app/parametres': {
-      id: '/_app/parametres'
-      path: '/parametres'
-      fullPath: '/parametres'
-      preLoaderRoute: typeof AppParametresRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/_app/rapports': {
-      id: '/_app/rapports'
-      path: '/rapports'
-      fullPath: '/rapports'
-      preLoaderRoute: typeof AppRapportsRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/_app/reseaux-sociaux': {
-      id: '/_app/reseaux-sociaux'
-      path: '/reseaux-sociaux'
-      fullPath: '/reseaux-sociaux'
-      preLoaderRoute: typeof AppReseauxSociauxRouteImport
-      parentRoute: typeof AppRoute
-    }
     '/_app/service-client': {
       id: '/_app/service-client'
       path: '/service-client'
@@ -327,48 +143,21 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppServiceClientRouteImport
       parentRoute: typeof AppRoute
     }
-    '/_app/studio': {
-      id: '/_app/studio'
-      path: '/studio'
-      fullPath: '/studio'
-      preLoaderRoute: typeof AppStudioRouteImport
-      parentRoute: typeof AppRoute
-    }
   }
 }
 
 interface AppRouteChildren {
-  AppAgentCommunityManagerRoute: typeof AppAgentCommunityManagerRoute
-  AppAnalyticsRoute: typeof AppAnalyticsRoute
   AppBaseDeConnaissanceRoute: typeof AppBaseDeConnaissanceRoute
-  AppBibliothequeRoute: typeof AppBibliothequeRoute
-  AppCalendrierRoute: typeof AppCalendrierRoute
   AppCampagnesAdsRoute: typeof AppCampagnesAdsRoute
   AppDashboardRoute: typeof AppDashboardRoute
-  AppFaqRoute: typeof AppFaqRoute
-  AppInspirationsRoute: typeof AppInspirationsRoute
-  AppParametresRoute: typeof AppParametresRoute
-  AppRapportsRoute: typeof AppRapportsRoute
-  AppReseauxSociauxRoute: typeof AppReseauxSociauxRoute
   AppServiceClientRoute: typeof AppServiceClientRoute
-  AppStudioRoute: typeof AppStudioRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
-  AppAgentCommunityManagerRoute: AppAgentCommunityManagerRoute,
-  AppAnalyticsRoute: AppAnalyticsRoute,
   AppBaseDeConnaissanceRoute: AppBaseDeConnaissanceRoute,
-  AppBibliothequeRoute: AppBibliothequeRoute,
-  AppCalendrierRoute: AppCalendrierRoute,
   AppCampagnesAdsRoute: AppCampagnesAdsRoute,
   AppDashboardRoute: AppDashboardRoute,
-  AppFaqRoute: AppFaqRoute,
-  AppInspirationsRoute: AppInspirationsRoute,
-  AppParametresRoute: AppParametresRoute,
-  AppRapportsRoute: AppRapportsRoute,
-  AppReseauxSociauxRoute: AppReseauxSociauxRoute,
   AppServiceClientRoute: AppServiceClientRoute,
-  AppStudioRoute: AppStudioRoute,
 }
 
 const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
