@@ -19,7 +19,7 @@ import { cn } from "@/lib/utils";
 
 type Tab = "conversations" | "configuration";
 export const Route = createFileRoute("/_app/service-client")({
-  validateSearch: (s: Record<string, unknown>): { tab?: Tab } => (s.tab === "configuration" || s.tab === "conversations" ? { tab: s.tab } : {}),
+  validateSearch: (s: Record<string, unknown>): { tab?: Tab } => (s["tab"] === "configuration" || s["tab"] === "conversations" ? { tab: s["tab"] } : {}),
   head: () => seo("Service Client IA", "Conversations clients gérées par l'Agent IA, prise de relais humaine et configuration de l'agent."),
   component: Support,
 });

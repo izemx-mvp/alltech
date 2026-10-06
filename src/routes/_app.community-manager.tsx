@@ -12,7 +12,7 @@ type Tab = "configuration" | "idees" | "calendrier";
 
 export const Route = createFileRoute("/_app/community-manager")({
   validateSearch: (s: Record<string, unknown>): { tab?: Tab } =>
-    ["configuration", "idees", "calendrier"].includes(s.tab as string) ? { tab: s.tab as Tab } : {},
+    ["configuration", "idees", "calendrier"].includes(s["tab"] as string) ? { tab: s["tab"] as Tab } : {},
   head: () => seo("Community Manager IA", "Configurez l'Agent IA, générez des idées de posts et gérez votre calendrier éditorial."),
   component: CM,
 });
