@@ -118,3 +118,5 @@ export function NetworkDot({ n }: { n: string }) {
 }
 
 export const fmt = (n: number) => n.toLocaleString("fr-FR");
+
+export const chartTooltip = { contentStyle: { background: "var(--popover)", border: "1px solid var(--border)", borderRadius: 12, fontSize: 12 } };

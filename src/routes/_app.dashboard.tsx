@@ -7,7 +7,7 @@ import {
 import { toast } from "sonner";
 import { seo } from "@/lib/seo";
 import { posts, reachSeries, aiSuggestions, conversations, campaigns } from "@/lib/mock";
-import { Kpi, PageHeader, Panel, StatusBadge, statusTone, AiTag, NetworkDot, fmt } from "@/components/app/kit";
+import { Kpi, PageHeader, Panel, StatusBadge, statusTone, AiTag, NetworkDot, fmt, chartTooltip } from "@/components/app/kit";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Progress } from "@/components/ui/progress";
@@ -16,8 +16,6 @@ export const Route = createFileRoute("/_app/dashboard")({
   head: () => seo("Dashboard", "Vue d'ensemble des performances réseaux sociaux, Ads et service client ALLTECH."),
   component: Dashboard,
 });
-
-export const chartTooltip = { contentStyle: { background: "var(--popover)", border: "1px solid var(--border)", borderRadius: 12, fontSize: 12 } };
 
 function Dashboard() {
   const [loading, setLoading] = useState(true);
