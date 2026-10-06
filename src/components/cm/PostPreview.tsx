@@ -26,7 +26,7 @@ function MediaGrid({ media }: { media: Media[] }) {
   );
 }
 
-/** Simulated social post. The preview card uses a light "feed" surface (popover tokens) to read like the real network. */
+/** Simulated LinkedIn / Facebook post card. */
 export function PostPreview({ platform, caption, hashtags, cta, media, logo }: Props) {
   const body = (
     <div className="whitespace-pre-line px-4 pb-3 text-[13px] leading-relaxed">

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Sparkles, ArrowLeft, Save, CheckCircle2, Send, CalendarClock, Check, Linkedin, Facebook } from "lucide-react";
 import { toast } from "sonner";
-import { useStore, setStore, getStore, TONES, TODAY, uid, type Idea, type Platform, type CaptionLength, type Media, type Publication } from "@/lib/store";
+import { useStore, setStore, TONES, TODAY, uid, type Idea, type Platform, type CaptionLength, type Media, type Publication } from "@/lib/store";
 import { AiThinking, useAiRun } from "@/components/app/kit";
 import { PostPreview } from "./PostPreview";
 import { MediaDropzone } from "./MediaDropzone";
@@ -166,4 +166,3 @@ export function PostWizard({ idea, onClose }: { idea: Idea | null; onClose: () =
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return <div><label className="mb-1.5 block text-xs font-medium text-muted-foreground">{label}</label>{children}</div>;
 }
-void getStore;
