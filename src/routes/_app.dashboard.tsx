@@ -39,7 +39,7 @@ function Dashboard() {
 
   return (
     <>
-      <PageHeader eyebrow="Mardi 6 octobre 2026" title="Bonjour Sophie 👋" subtitle="Voici la performance de votre communication digitale cette semaine."
+      <PageHeader eyebrow="Mardi 6 octobre 2026" title="Bonjour Sophie" subtitle="Voici la performance de votre communication digitale cette semaine."
         actions={<><Button variant="outline" onClick={() => toast.success("Rapport hebdomadaire exporté (PDF).")}>Exporter</Button><Button variant="ai" asChild><Link to="/agent-community-manager"><Sparkles /> Demander à l'IA</Link></Button></>} />
 
       <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-6">
